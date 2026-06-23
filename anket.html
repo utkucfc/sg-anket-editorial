@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<script>if(sessionStorage.getItem("sg_kvkk_onay")!=="1"){location.replace("index.html");}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çalışan Memnuniyet Anketi 2026 — Sistem Global Danışmanlık</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f4ec;
+    --paper-2:#fbf9f3;
+    --ink:#1c1a17;
+    --ink-soft:#46423b;
+    --ink-faint:#615b51;
+    --rule:#d8d1c2;
+    --rule-strong:#bbb2a0;
+    --accent:#7a2d24;       /* deep oxblood */
+    --accent-soft:#a14438;
+    --accent-tint:#efe6dd;
+    --gold:#9a6b1f;
+    --field:#ffffff;
+    --field-border:#cbc3b3;
+    --good:#2f5d3a;
+    --err:#a02118;
+    --err-bg:#f7e7e3;
+    --focus:#7a2d24;
+    --shadow:0 1px 2px rgba(42,36,28,.05), 0 8px 30px rgba(42,36,28,.07);
+    --radius:3px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Source Sans 3", sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    background-image:
+      radial-gradient(circle at 14% 8%, rgba(122,45,36,.025), transparent 40%),
+      radial-gradient(circle at 86% 92%, rgba(154,107,31,.03), transparent 42%);
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px 80px}
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    text-align:center;
+    padding:46px 0 26px;
+    border-bottom:3px double var(--rule-strong);
+  }
+  .kicker{
+    font-family:"Source Sans 3",sans-serif;
+    font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin:0 0 14px;
+  }
+  .masthead h1{
+    font-family:"Newsreader", serif;
+    font-weight:500;
+    font-size:clamp(2rem,6.5vw,3.3rem);
+    line-height:1.02;
+    margin:0;
+    letter-spacing:-.012em;
+    color:var(--ink);
+  }
+  .masthead .sub{
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-size:clamp(1.05rem,3.5vw,1.35rem);
+    color:var(--ink-soft);
+    margin:14px 0 0;
+  }
+  .dateline{
+    margin:18px 0 0;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .dateline span{margin:0 8px}
+
+  /* ---------- Anonymity notice ---------- */
+  .anon{
+    margin:24px 0 0;
+    border:1px solid var(--rule);
+    background:var(--paper-2);
+    border-radius:var(--radius);
+    padding:16px 20px;
+    display:flex;gap:13px;align-items:flex-start;
+  }
+  .anon svg{flex:0 0 auto;margin-top:2px;color:var(--accent)}
+  .anon p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.55}
+  .anon strong{color:var(--ink);font-weight:600}
+
+  /* ---------- Progress ---------- */
+  .progress-shell{position:sticky;top:0;z-index:30;background:var(--paper);padding-top:14px}
+  .progress-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin:0 0 9px;
+  }
+  .progress-step{
+    font-family:"Newsreader",serif;font-style:italic;font-size:15px;color:var(--ink-faint);
+  }
+  .progress-step b{color:var(--accent);font-style:normal;font-weight:600;font-family:"Source Sans 3",sans-serif}
+  .progress-pct{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .track{height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+  .bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-soft));transition:width .4s cubic-bezier(.4,0,.2,1)}
+  .progress-shell::after{content:"";display:block;height:14px;background:linear-gradient(var(--paper),transparent)}
+
+  /* ---------- Step / section ---------- */
+  .step{display:none;animation:fade .35s ease both}
+  .step.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .section-head{margin:6px 0 30px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+  .sec-number{
+    display:inline-flex;align-items:baseline;gap:10px;
+    font-family:"Newsreader",serif;color:var(--accent);margin-bottom:6px;
+  }
+  .sec-number .num{
+    font-size:2.5rem;font-weight:600;line-height:1;letter-spacing:-.02em;
+  }
+  .sec-number .of{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
+  .section-head h2{
+    font-family:"Newsreader",serif;font-weight:500;font-size:clamp(1.6rem,4.6vw,2.2rem);
+    line-height:1.1;margin:4px 0 0;letter-spacing:-.01em;color:var(--ink);
+  }
+  .section-head .lead{
+    font-family:"Newsreader",serif;font-style:italic;font-size:1.08rem;color:var(--ink-soft);
+    margin:12px 0 0;max-width:56ch;
+  }
+
+  /* ---------- Demographics ---------- */
+  .field{margin:0 0 24px}
+  .field > label, .field > .lg{
+    display:block;font-weight:600;font-size:15.5px;color:var(--ink);margin:0 0 8px;
+    letter-spacing:.005em;
+  }
+  .opt{font-weight:400;color:var(--ink-faint);font-style:italic;font-family:"Newsreader",serif;font-size:15px}
+  .req-mark{color:var(--accent);font-weight:700;margin-left:3px}
+  input[type="number"], select{
+    width:100%;font-family:"Source Sans 3",sans-serif;font-size:16px;color:var(--ink);
+    background:var(--field);border:1px solid var(--field-border);border-radius:var(--radius);
+    padding:13px 14px;line-height:1.3;transition:border-color .18s, box-shadow .18s;
+    -webkit-appearance:none;appearance:none;
+  }
+  select{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237a746a' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;cursor:pointer;
+  }
+  input[type="number"]:focus, select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(122,45,36,.13)}
+  input[type="number"]:focus-visible, select:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+
+  /* segmented chip radios (demographic) */
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{position:relative}
+  .chip input{position:absolute;opacity:0;width:1px;height:1px}
+  .chip label{
+    display:inline-flex;align-items:center;min-height:44px;padding:0 17px;
+    font-size:15.5px;color:var(--ink-soft);background:var(--field);
+    border:1px solid var(--field-border);border-radius:999px;cursor:pointer;
+    transition:all .16s ease;font-family:"Source Sans 3",sans-serif;
+  }
+  .chip label:hover{border-color:var(--rule-strong);background:var(--paper-2)}
+  .chip input:checked + label{
+    background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;
+    box-shadow:0 2px 8px rgba(122,45,36,.22);
+  }
+  .chip input:focus-visible + label{outline:2px solid var(--focus);outline-offset:2px}
+
+  /* ---------- Likert legend ---------- */
+  .legend{
+    border:1px solid var(--rule);background:var(--paper-2);border-radius:var(--radius);
+    padding:16px 18px;margin:0 0 30px;
+  }
+  .legend h3{
+    font-family:"Source Sans 3",sans-serif;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-faint);margin:0 0 12px;font-weight:600;
+  }
+  .legend ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:7px 22px}
+  .legend li{display:flex;gap:9px;align-items:baseline;font-size:14px;color:var(--ink-soft)}
+  .legend .dot{
+    flex:0 0 auto;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--rule-strong);
+    display:inline-flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;
+    color:var(--accent);background:#fff;font-family:"Source Sans 3",sans-serif;
+  }
+
+  /* ---------- Question card / line-scale likert ---------- */
+  .q{
+    padding:26px 0 28px;border-bottom:1px solid var(--rule);
+    position:relative;scroll-margin-top:120px;
+  }
+  .q:first-of-type{padding-top:6px}
+  .q.invalid{border-left:none}
+  /* reset native fieldset chrome so it lays out like the original card */
+  fieldset.q{border:0;margin:0;padding:26px 0 28px;min-width:0}
+  fieldset.q:first-of-type{padding-top:6px}
+  /* legend as flex header: width:100% keeps it from shrink-wrapping */
+  legend.q-head{display:flex;gap:14px;align-items:flex-start;margin:0 0 20px;width:100%;max-width:100%;padding:0;box-sizing:border-box;float:none}
+  .q-no{
+    flex:0 0 auto;font-family:"Newsreader",serif;font-style:italic;font-weight:500;
+    font-size:1.15rem;color:var(--accent);line-height:1.3;min-width:30px;
+    border-right:1px solid var(--rule);padding-right:12px;text-align:right;
+  }
+  .q-text{
+    font-family:"Newsreader",serif;font-size:1.18rem;line-height:1.45;color:var(--ink);
+    font-weight:400;letter-spacing:-.003em;
+  }
+
+  /* the line scale */
+  .scale{position:relative;padding:6px 0 0}
+  .scale-rail{
+    position:absolute;left:0;right:0;top:24px;height:2px;background:var(--rule);
+    margin:0 calc(100%/10);  /* center under first & last dot roughly */
+  }
+  .scale-options{
+    display:grid;grid-template-columns:repeat(5,1fr);position:relative;z-index:2;
+  }
+  .stop{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .stop input{position:absolute;opacity:0;width:1px;height:1px}
+  .stop label{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;width:100%;
+    min-height:44px;padding:8px 2px 6px;border-radius:var(--radius);transition:background .15s;
+  }
+  .stop label:hover{background:rgba(122,45,36,.05)}
+  .stop .mark{
+    width:30px;height:30px;border-radius:50%;background:var(--paper);
+    border:2px solid var(--rule-strong);display:flex;align-items:center;justify-content:center;
+    transition:all .2s cubic-bezier(.34,1.56,.64,1);position:relative;
+  }
+  .stop .mark::after{
+    content:"";width:11px;height:11px;border-radius:50%;background:transparent;transition:all .2s;
+  }
+  .stop .val{
+    margin-top:9px;font-size:13px;font-weight:600;color:var(--ink-faint);
+    font-variant-numeric:tabular-nums;transition:color .18s;min-height:18px;
+  }
+  .stop label:hover .mark{border-color:var(--accent-soft)}
+  .stop input:checked + label .mark{
+    border-color:var(--accent);background:var(--accent);
+    box-shadow:0 2px 9px rgba(122,45,36,.28);
+  }
+  .stop input:checked + label .mark::after{background:#fff}
+  .stop input:checked + label .val{color:var(--accent)}
+  .stop input:focus-visible + label .mark{outline:2px solid var(--focus);outline-offset:3px}
+
+  .scale-ends{
+    display:flex;justify-content:space-between;margin:14px 2px 0;
+    font-family:"Newsreader",serif;font-style:italic;font-size:14px;color:var(--ink-faint);
+  }
+  .scale-ends span{max-width:44%}
+  .scale-ends .right{text-align:right}
+
+  .q-error{
+    display:none;margin:14px 0 0;color:var(--err);font-size:14px;font-weight:600;
+    background:var(--err-bg);border:1px solid rgba(160,33,24,.25);border-radius:var(--radius);
+    padding:8px 12px;align-items:center;gap:8px;
+  }
+  .q.invalid .q-error{display:flex}
+  .q.invalid .q-no{color:var(--err);border-color:rgba(160,33,24,.4)}
+
+  /* ---------- Open ended ---------- */
+  textarea{
+    width:100%;font-family:"Source Sans 3",sans-serif;font-size:16px;line-height:1.6;color:var(--ink);
+    background:var(--field);border:1px solid var(--field-border);border-radius:var(--radius);
+    padding:14px;min-height:130px;resize:vertical;transition:border-color .18s, box-shadow .18s;
+  }
+  textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(122,45,36,.13)}
+  textarea:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+  .oe label{
+    display:block;font-family:"Newsreader",serif;font-size:1.12rem;line-height:1.4;color:var(--ink);
+    margin:0 0 10px;
+  }
+  .oe{margin:0 0 30px}
+  .oe .opt{display:block;margin-top:4px}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+    margin:38px 0 0;padding-top:24px;border-top:1px solid var(--rule);
+  }
+  .btn{
+    font-family:"Source Sans 3",sans-serif;font-size:15.5px;font-weight:600;cursor:pointer;
+    border-radius:var(--radius);padding:0 24px;min-height:50px;display:inline-flex;align-items:center;
+    gap:9px;transition:all .18s ease;border:1px solid transparent;letter-spacing:.01em;
+  }
+  .btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn-primary:hover{background:#641f18;box-shadow:0 4px 14px rgba(122,45,36,.26)}
+  .btn-ghost{background:transparent;color:var(--ink-soft);border-color:var(--field-border)}
+  .btn-ghost:hover{border-color:var(--rule-strong);background:var(--paper-2);color:var(--ink)}
+  .btn[disabled]{opacity:.55;cursor:not-allowed;box-shadow:none}
+  .btn-primary[disabled]:hover{background:var(--accent)}
+  .nav .spacer{flex:1}
+
+  .step-alert{
+    display:none;margin:20px 0 0;color:var(--err);background:var(--err-bg);
+    border:1px solid rgba(160,33,24,.3);border-radius:var(--radius);padding:11px 15px;
+    font-size:14.5px;font-weight:600;align-items:center;gap:9px;
+  }
+  .step-alert.show{display:flex}
+
+  /* ---------- Thank you ---------- */
+  .thanks{display:none;text-align:center;padding:50px 0 0}
+  .thanks.active{display:block;animation:fade .5s ease both}
+  .thanks .seal{
+    width:70px;height:70px;margin:0 auto 26px;border:2px solid var(--accent);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:var(--accent);
+  }
+  .thanks .kicker{margin-bottom:18px}
+  .thanks h2{
+    font-family:"Newsreader",serif;font-weight:500;font-size:clamp(1.9rem,6vw,2.7rem);
+    line-height:1.08;margin:0;color:var(--ink);letter-spacing:-.01em;
+  }
+  .thanks p{font-family:"Newsreader",serif;font-style:italic;font-size:1.2rem;color:var(--ink-soft);margin:18px auto 0;max-width:46ch}
+  .thanks .rule{width:60px;height:1px;background:var(--rule-strong);margin:30px auto}
+
+  footer.fine{
+    margin:42px 0 0;text-align:center;font-size:12.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:560px){
+    body{font-size:16px}
+    .wrap{padding:0 16px 64px}
+    .masthead{padding:34px 0 22px}
+    .legend ol{grid-template-columns:1fr}
+    .stop .val{display:none}
+    .scale-options{grid-template-columns:repeat(5,1fr)}
+    .stop .mark{width:38px;height:38px}
+    .stop .mark::after{width:13px;height:13px}
+    .q-text{font-size:1.1rem}
+    .scale-ends{font-size:13px}
+    .nav{flex-wrap:wrap}
+    .btn{flex:1;justify-content:center}
+    .nav .spacer{display:none}
+  }
+  @media (max-width:360px){
+    .stop .mark{width:34px;height:34px}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important;transition-duration:.001ms !important;scroll-behavior:auto !important}
+    .bar{transition:none}
+  }
+  @media (prefers-contrast: more){
+    :root{--rule:#9a9385;--field-border:#7a746a;--ink-faint:#5a554c}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="kicker">Sistem Global Danışmanlık</p>
+    <h1>Çalışan Memnuniyet<br>Anketi</h1>
+    <p class="sub">İnsan kaynakları araştırması · Yıllık değerlendirme</p>
+    <p class="dateline"><span>Cilt MMXXVI</span>·<span>Anonim Katılım</span>·<span>76 İfade</span></p>
+    <div class="anon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <p><strong>Yanıtlarınız tamamen anonimdir.</strong> Ad, soyad, departman veya kimliğinizi belirtebilecek hiçbir bilgi toplanmaz. Görüşleriniz yalnızca toplu olarak değerlendirilir. Lütfen samimi ve içtenlikle yanıtlayın.</p>
+    </div>
+  </header>
+
+  <div class="progress-shell" role="region" aria-label="İlerleme">
+    <div class="progress-head">
+      <span class="progress-step" id="stepLabel"></span>
+      <span class="progress-pct" id="pctLabel"></span>
+    </div>
+    <div class="track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressbar">
+      <div class="bar" id="bar"></div>
+    </div>
+  </div>
+
+  <form id="survey" novalidate>
+    <!-- steps injected here -->
+  </form>
+
+  <section class="thanks" id="thanks" tabindex="-1" aria-live="polite">
+    <div class="seal" aria-hidden="true">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <p class="kicker">Tamamlandı</p>
+    <h2>Teşekkür ederiz.</h2>
+    <div class="rule"></div>
+    <p>Değerli görüşlerinizi bizimle paylaştığınız için minnettarız. Katkınız, daha iyi bir çalışma kültürü inşa etmemize yardımcı olacak.</p>
+  </section>
+
+  <footer class="fine">© MMXXVI Sistem Global Danışmanlık · Gizli &amp; Anonim</footer>
+</div>
+
+<script>
+/* ============ SURVEY DATA (verbatim from soru-seti.json) ============ */
+const SURVEY = {
+  "baslik": "Çalışan Memnuniyet Anketi 2026",
+  "sirket": "Sistem Global Danışmanlık",
+  "likertLabels": [
+    "Hiç Memnun Değilim / Katılmıyorum",
+    "Memnun Değilim / Katılmıyorum",
+    "Emin Değilim",
+    "Memnunum / Katılıyorum",
+    "Çok Memnunum / Tamamen Katılıyorum"
+  ],
+  "groups": [
+    {
+      "anaBaslik": "Güvenilirlik 1. Bölüm",
+      "tema": "Güvenilirlik",
+      "bolum": 1,
+      "alan": "Yönetici",
+      "questions": [
+        { "no": 1, "text": "Bağlı olduğum yöneticim bana önemli konular ve değişiklikler hakkında bilgi verir.", "boyut": "Geribildirim" },
+        { "no": 2, "text": "Bağlı olduğum yöneticim beklentilerini açık ve net olarak ifade eder.", "boyut": "Liderlik" },
+        { "no": 3, "text": "Bağlı olduğum yöneticime her makul soruyu sorabiliyorum ve doğrudan bir cevap alabiliyorum.", "boyut": "İletişim Etkinliği" },
+        { "no": 4, "text": "Bağlı olduğum yöneticime kolayca ulaşabilir, onunla rahatça konuşabiliyorum.", "boyut": "İletişim Etkinliği" },
+        { "no": 5, "text": "Bağlı olduğum yöneticim yetkindir ve benim gelişimime destek olur, öğretir.", "boyut": "Liderlik" },
+        { "no": 6, "text": "Bağlı olduğum yöneticim görevlerin dağıtılması ve çalışanların koordinasyonu konusunda iyi çalışıyor.", "boyut": "Liderlik" },
+        { "no": 7, "text": "Sahip olduğum yetkiler, sorumluluklarımla dengelidir.", "boyut": "Yetkelendirme" },
+        { "no": 8, "text": "Bağlı olduğum yöneticim organizasyonun hedefleri ve bunlara nasıl ulaşılabileceği hakkında net düşüncelere sahiptir.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 9, "text": "Bağlı olduğum yöneticim verdiği sözleri tutar.", "boyut": "Liderlik" },
+        { "no": 10, "text": "Bağlı olduğum yöneticimin söylediği ile yaptığı birbirini tutuyor.", "boyut": "Liderlik" },
+        { "no": 11, "text": "Bağlı olduğum yöneticimin iş ile ilgili uygulamaları dürüsttür ve ahlak kurallarına uygundur.", "boyut": "Etik Yönetim" }
+      ]
+    },
+    {
+      "anaBaslik": "Takım Ruhu 2. Bölüm",
+      "tema": "Takım Ruhu",
+      "bolum": 2,
+      "alan": "Yönetici",
+      "questions": [
+        { "no": 12, "text": "Bağlı bulunduğum yöneticimin kararlarında adil ve tarafsız davrandığına inanıyorum.", "boyut": "Liderlik" },
+        { "no": 13, "text": "Bölüm içindeki çalışanlar arasında işbirliği ve iletişim yeterlidir.", "boyut": "İç İletişim" },
+        { "no": 14, "text": "Bağlı olduğum yöneticim ekibinin eğitimi ve gelişimini destekler.", "boyut": "Liderlik" },
+        { "no": 15, "text": "Bağlı olduğum yöneticim, sorunlar karşısında çalışanlara karşı açık fikirli, yapıcı yaklaşır ve sorunları karşılıklı konuşarak çözer.", "boyut": "Liderlik" }
+      ]
+    },
+    {
+      "anaBaslik": "Güvenilirlik - Saygı 1. Bölüm",
+      "tema": "Güvenilirlik - Saygı",
+      "bolum": 1,
+      "alan": "Şirket",
+      "questions": [
+        { "no": 16, "text": "Yönetim (Mutfak/bölüm yönetimi) bu şirkete uyum sağlayabilecek uygun personeli işe alır.", "boyut": "Çalışma Ortamı" },
+        { "no": 17, "text": "Mesleki açıdan kendimi geliştirmemi sağlayacak eğitim olanakları ve destek verilmektedir.", "boyut": "Eğitim Destek & Memnuniyet" },
+        { "no": 18, "text": "İşimi iyi yapabilmek için gerekli olan malzeme ve donanımlar bana sağlanır. Kullandığım ekipmanlar (bilgisayar, kullanılan yazılımlar, vb) yeterli ve uygundur.", "boyut": "Gelişim" },
+        { "no": 19, "text": "Burada yeteneklerimi en iyi şekilde değerlendirebiliyorum.", "boyut": "Kariyer" },
+        { "no": 20, "text": "Üst yönetim (Mutfak/bölüm yönetimi) iyi çalışmayı ve özel çabayı takdir etmektedir.", "boyut": "Takdir Tanıma" },
+        { "no": 21, "text": "Üst yönetim (Mutfak/bölüm yönetimi) çalışanların önerilerini ve fikirlerini dikkate alır ve cevaplandırır.", "boyut": "Motivasyon" },
+        { "no": 22, "text": "Duygusal ve psikolojik olarak sağlıklı bir iş ortamı vardır.", "boyut": "Çalışma Ortamı" },
+        { "no": 23, "text": "Binamız ve ofislerimiz iyi bir iş ortamına katkıda bulunmaktadır.", "boyut": "Çalışma Ortamı" },
+        { "no": 24, "text": "Gerekli olduğunu düşündüğüm zaman izin alabiliyorum.", "boyut": "İş Yaşam Dengesi" }
+      ]
+    },
+    {
+      "anaBaslik": "Hakkaniyet 2. Bölüm",
+      "tema": "Hakkaniyet",
+      "bolum": 2,
+      "alan": "Şirket",
+      "questions": [
+        { "no": 25, "text": "Aldığım maaş / ücret, niteliklerime, yaptığım işe ve piyasa koşullarına göre yeterlidir.", "boyut": "Ücret Politikası" },
+        { "no": 26, "text": "Burada herkesin fark edilme ve takdir edilme imkanı bulunmaktadır.", "boyut": "Takdir Tanıma" },
+        { "no": 27, "text": "Burada bana pozisyonuma bakılmaksızın, şirketin bir parçası gibi davranılır.", "boyut": "Çalışma Ortamı" },
+        { "no": 28, "text": "Üst yönetimin (Mutfak/bölüm yönetimi) kararlarında adil ve tarafsız davrandığına inanıyorum.", "boyut": "Liderlik" },
+        { "no": 29, "text": "Çalışanlara yaşlarına bakılmaksızın adil davranılır.", "boyut": "Çeşitlilik & Fırsat Eşitliği" },
+        { "no": 30, "text": "Çalışanlara, milliyetleri ve etnik kökenleri dikkate alınmaksızın adil davranılır.", "boyut": "Çeşitlilik & Fırsat Eşitliği" },
+        { "no": 31, "text": "Çalışanlara, cinsiyetlerine bakılmaksızın adil davranılır.", "boyut": "Çeşitlilik & Fırsat Eşitliği" },
+        { "no": 32, "text": "Çalışanlara engelliliklerine bakılmaksızın adil bir şekilde davranılır.", "boyut": "Çeşitlilik & Fırsat Eşitliği" },
+        { "no": 33, "text": "Eğer bana haksızlık yapıldığı için bir şikayette bulunursam bunun adilce değerlendirileceğinden eminim.", "boyut": "Etik Yönetim" }
+      ]
+    },
+    {
+      "anaBaslik": "Gurur 3. Bölüm",
+      "tema": "Gurur",
+      "bolum": 3,
+      "alan": "Şirket",
+      "questions": [
+        { "no": 34, "text": "Buraya önemli katkılarda bulunabileceğime ve potansiyelimi şirkete gösterebileceğime inanıyorum.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 35, "text": "İşim benim için özel bir anlam taşımaktadır ve sadece \"iş\" değildir.", "boyut": "Marka Elçiliği" },
+        { "no": 36, "text": "Burada müşterek olarak yaptıklarımızdan gurur duymaktayım.", "boyut": "Marka Elçiliği" },
+        { "no": 37, "text": "Buradaki çalışanlar işi tamamlamak ve müşteri memnuniyetini sağlamak için daha fazla çalışmaya hazırdırlar.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 38, "text": "Burada uzun bir süre daha çalışmak istiyorum.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 39, "text": "Başkalarına burada çalıştığımı söylemekten gurur duyuyorum.", "boyut": "Marka Elçiliği" },
+        { "no": 40, "text": "Yakın tanıdıklarıma bu şirketi işveren olarak tavsiye ederim.", "boyut": "Marka Elçiliği" },
+        { "no": 41, "text": "Ürünlerimizi ve hizmetlerimizi tavsiye ediyorum.", "boyut": "Marka Elçiliği" },
+        { "no": 42, "text": "Çalışanlar işlerine severek gelirler.", "boyut": "Motivasyon" },
+        { "no": 43, "text": "Topluma değer katma biçimimizden memnunum.", "boyut": "Toplumsal Katkı" }
+      ]
+    },
+    {
+      "anaBaslik": "Takım Ruhu 4. Bölüm",
+      "tema": "Takım Ruhu",
+      "bolum": 4,
+      "alan": "Şirket",
+      "questions": [
+        { "no": 44, "text": "Ben burada \"kendim\" olabiliyorum ve rol yapmama hiç gerek yok.", "boyut": "Kişisel Gelişim" },
+        { "no": 45, "text": "Çalışanlar birbirleri ile ilgilenmektedirler.", "boyut": "İç İletişim" },
+        { "no": 46, "text": "Burada hoş ve dostça bir çalışma ortamımız vardır.", "boyut": "Çalışma Ortamı" },
+        { "no": 47, "text": "Burada çalışmak zevklidir.", "boyut": "Motivasyon" },
+        { "no": 48, "text": "Yeni bir çalışan olarak burada hoş karşılanıyorsun.", "boyut": "Çalışma Ortamı" },
+        { "no": 49, "text": "Çalışanlar işletme dahilinde başka bir işe veya bölüme geçtiklerinde iyi bir şekilde karşılanır ve uyum sağlamaları için destek olunur.", "boyut": "Çalışma Ortamı" },
+        { "no": 50, "text": "Biz burada kendimizi bir \"takım\" gibi hissediyoruz ve iyi bir ekip ruhumuz var.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 51, "text": "Burada hepimiz aynı gemide yer almaktayız.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 52, "text": "Çalışanların işbirliğine güvenilir.", "boyut": "İç İletişim" },
+        { "no": 53, "text": "Farklı birimler ve bölümler arasında işbirliği ve iletişim yeterlidir.", "boyut": "İç İletişim" }
+      ]
+    },
+    {
+      "anaBaslik": "Genel 5. Bölüm",
+      "tema": "Genel",
+      "bolum": 5,
+      "alan": "Şirket",
+      "questions": [
+        { "no": 54, "text": "Aldığımız eğitimlerin etkinlikleri değerlendirilerek eksik olan alanlar için yeni planlamalar yapılır.", "boyut": "Eğitim Destek & Memnuniyet" },
+        { "no": 55, "text": "‘Kendimi bu firmada takımın bir parçası olarak görüyorum’ ifadesine ne ölçüde katılıyorsunuz?", "boyut": "İç İletişim" },
+        { "no": 56, "text": "Çalıştığım şirkette çalışanların motivasyon düzeyinin yüksek olduğunu düşünüyorum.", "boyut": "Motivasyon" },
+        { "no": 57, "text": "Çalışma saatlerim ve mola sürelerim yeterli ve uygundur.", "boyut": "Çalışma Ortamı" },
+        { "no": 58, "text": "Departman içi iş yükü dağılımı adildir.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 59, "text": "Organizasyon değişikliklerinde / işe alımlarda, uygulanan oryantasyon programı yeterlidir.", "boyut": "Eğitim Destek & Memnuniyet" },
+        { "no": 60, "text": "Şirkette karar alma süreci hızlıdır ve bu şirketin işlerini hızlandırır.", "boyut": "Katılım Karar Alma" },
+        { "no": 61, "text": "Çay, kahve vb. içecek ikramları yeterli ve uygundur.", "boyut": "Çalışma Ortamı" },
+        { "no": 62, "text": "Şirkette yapılan sosyal faaliyetler yeterlidir.", "boyut": "İç İletişim" },
+        { "no": 63, "text": "Şirketimde çalışanlara, görev alanları dışındaki projelere (farklı çalışmalara) katılım imkanı sağlanır.", "boyut": "Kişisel Gelişim" },
+        { "no": 64, "text": "Terfi imkanları yaratılırken kadın ve erkekler için fırsat eşitliği sağlanır.", "boyut": "Çeşitlilik & Fırsat Eşitliği" },
+        { "no": 65, "text": "Şirketimin ortak ve uzun vadeli hedefleri yeterli derecede açık ve anlaşılırdır.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 66, "text": "Şirketimizin dijitalleşme uygulamalarında adım adım iyileştirmeler yaparak ilerlediğine inanıyorum.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 67, "text": "Şirketimizde müşteri memnuniyetine önem verilir.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 68, "text": "Şirketimizde çalışan memnuniyeti esas alınır.", "boyut": "Motivasyon" },
+        { "no": 69, "text": "Şirketim kurumsallaşma ve profesyonel yönetim anlayışına sahip olup her zaman yenilikçidir.", "boyut": "Hedeflerle Yönetim & Performans" },
+        { "no": 70, "text": "Şirketim topluma ve çevreye karşı sorumlu davranır.", "boyut": "Toplumsal Katkı" },
+        { "no": 71, "text": "Genel olarak düşündüğünüzde Sistem Global'de çalışmaktan ne ölçüde memnunsunuz?", "boyut": "Motivasyon" },
+        { "no": 72, "text": "Şirketinizin çalışanları için yapmış olduğu bu anket çalışmasından sonra, çalışanların talepleri doğrultusunda gerekli düzenlemelerin yapılacağına inanıyor musunuz?", "boyut": "Motivasyon" },
+        { "no": 73, "text": "Şirketim teknolojive yazılım alanındaki gelişmeleri ( RPA; AI, Sürece özel yazılımlar vb.) takip eder ve uygular", "boyut": "Teknoloji, İnovasyon" },
+        { "no": 74, "text": "Şirketim teknoloji alanında benim gelişimimi destekler", "boyut": "Teknoloji, İnovasyon" },
+        { "no": 75, "text": "Şirketim inovasyona açık bir şirkettir ve inovasyon kültürü tüm çalışanlara yaygınlaştırılmıştır.", "boyut": "Teknoloji, İnovasyon" },
+        { "no": 76, "text": "Şirketim çevre konularında duyarlıdır ve benim de bu alanda farkındalığımı arttırmaktadır.", "boyut": "Teknoloji, İnovasyon" }
+      ]
+    }
+  ],
+  "openEnded": [
+    "Eğer olanağınız olsaydı çalıştığınız firmanızda neleri değiştirirdiniz?",
+    "Değiştirmek istediğiniz konularla ilgili çözüm önerileriniz nelerdir? Yazar mısınız?",
+    "Şirketimi olumlu yönde farklılaştıran en önemli özelliği nedir?"
+  ]
+};
+
+/* ============ helpers ============ */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LBL = SURVEY.likertLabels;
+
+const form = $('#survey');
+const TOTAL_STEPS = 1 + SURVEY.groups.length + 1; // demographic + 7 groups + open-ended = 9
+let current = 0;
+let submitted = false;
+
+/* ---- Build step 1: demographics ---- */
+function buildDemographics(){
+  const cities = ["İstanbul","Ankara","İzmir","Bursa","Kocaeli","Antalya","Gaziantep","Diğer"];
+  const genders = ["Kadın","Erkek","Belirtmek istemiyorum"];
+  const seniority = ["0-1 yıl","1-3 yıl","3-5 yıl","5-10 yıl","10+ yıl"];
+
+  const step = document.createElement('section');
+  step.className = 'step';
+  step.id = 'step-0';
+  step.setAttribute('aria-label','Demografik bilgiler');
+
+  step.innerHTML = `
+    <div class="section-head">
+      <span class="sec-number"><span class="num">01</span><span class="of">/ ${String(TOTAL_STEPS).padStart(2,'0')}</span></span>
+      <h2>Sizi Tanıyalım</h2>
+      <p class="lead">Birkaç isteğe bağlı soru ile yanıtları toplu olarak gruplayabiliyoruz. Kimliğiniz hiçbir şekilde kaydedilmez.</p>
+    </div>
+
+    <div class="field">
+      <label for="yas">Yaş <span class="opt">(opsiyonel)</span></label>
+      <input type="number" id="yas" name="yas" min="18" max="70" inputmode="numeric" autocomplete="off" placeholder="Örn. 34">
+    </div>
+
+    <div class="field">
+      <label for="sehir">Şehir <span class="opt">(opsiyonel)</span></label>
+      <select id="sehir" name="sehir">
+        <option value="">Seçiniz…</option>
+        ${cities.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('')}
+      </select>
+    </div>
+
+    <div class="field">
+      <span class="lg" id="lbl-cinsiyet">Cinsiyet <span class="opt">(opsiyonel)</span></span>
+      <div class="chips" role="radiogroup" aria-labelledby="lbl-cinsiyet">
+        ${genders.map((g,i)=>`
+          <span class="chip">
+            <input type="radio" id="cinsiyet-${i}" name="cinsiyet" value="${esc(g)}">
+            <label for="cinsiyet-${i}">${esc(g)}</label>
+          </span>`).join('')}
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="lg" id="lbl-kidem">Kıdem <span class="req-mark" aria-hidden="true">*</span><span class="sr-only">(zorunlu)</span></span>
+      <div class="chips" role="radiogroup" aria-labelledby="lbl-kidem" aria-required="true" aria-describedby="err-kidem" id="kidem-group">
+        ${seniority.map((s,i)=>`
+          <span class="chip">
+            <input type="radio" id="kidem-${i}" name="kidem" value="${esc(s)}" ${i===0?'data-first="1"':''}>
+            <label for="kidem-${i}">${esc(s)}</label>
+          </span>`).join('')}
+      </div>
+      <div class="q-error" id="err-kidem" role="alert">Lütfen kıdem aralığınızı seçin.</div>
+    </div>
+  `;
+  form.appendChild(step);
+}
+
+/* ---- Likert legend block ---- */
+function legendHTML(){
+  return `
+    <div class="legend" aria-hidden="false">
+      <h3>Değerlendirme Ölçeği</h3>
+      <ol>
+        ${LBL.map((l,i)=>`<li><span class="dot" aria-hidden="true">${i+1}</span><span>${esc(l)}</span></li>`).join('')}
+      </ol>
+    </div>`;
+}
+
+/* ---- one likert question (line-scale, 5 circular stops) ---- */
+function questionHTML(q, group){
+  const name = `q_${q.no}`;
+  const stops = [1,2,3,4,5].map(v=>{
+    const aria = `${v} — ${LBL[v-1]}`;
+    return `
+      <div class="stop">
+        <input type="radio" id="${name}_${v}" name="${name}" value="${v}"
+               aria-label="${esc(aria)}"
+               data-no="${q.no}" data-alan="${esc(group.alan)}" data-tema="${esc(group.tema)}" data-boyut="${esc(q.boyut)}">
+        <label for="${name}_${v}">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="val" aria-hidden="true">${v}</span>
+        </label>
+      </div>`;
+  }).join('');
+
+  return `
+    <fieldset class="q" data-q="${q.no}" id="qwrap_${q.no}" aria-describedby="err_${q.no}">
+      <legend class="q-head">
+        <span class="q-no" aria-hidden="true">${q.no}</span>
+        <span class="q-text">${esc(q.text)}</span>
+      </legend>
+      <div class="scale">
+        <div class="scale-options" role="presentation">${stops}</div>
+        <div class="scale-ends">
+          <span>${esc(LBL[0])}</span>
+          <span class="right">${esc(LBL[4])}</span>
+        </div>
+      </div>
+      <div class="q-error" id="err_${q.no}" role="alert">Lütfen bu ifade için bir değerlendirme seçin.</div>
+    </fieldset>`;
+}
+
+/* ---- Build group steps (2..8) ---- */
+function buildGroups(){
+  SURVEY.groups.forEach((g, gi)=>{
+    const stepIndex = gi + 1; // 1-based step (demographic is 0)
+    const step = document.createElement('section');
+    step.className = 'step';
+    step.id = `step-${stepIndex}`;
+    step.setAttribute('aria-label', g.anaBaslik);
+
+    const num = String(stepIndex+1).padStart(2,'0');
+    step.innerHTML = `
+      <div class="section-head">
+        <span class="sec-number"><span class="num">${num}</span><span class="of">/ ${String(TOTAL_STEPS).padStart(2,'0')}</span></span>
+        <h2>${esc(g.tema)}</h2>
+        <p class="lead">Aşağıdaki ${g.questions.length} ifadeyi, size en uygun düşeni işaretleyerek değerlendirin.</p>
+      </div>
+      ${legendHTML()}
+      <div class="questions">
+        ${g.questions.map(q=>questionHTML(q, g)).join('')}
+      </div>
+    `;
+    form.appendChild(step);
+  });
+}
+
+/* ---- Build open-ended step (last) ---- */
+function buildOpenEnded(){
+  const stepIndex = SURVEY.groups.length + 1; // 8
+  const step = document.createElement('section');
+  step.className = 'step';
+  step.id = `step-${stepIndex}`;
+  step.setAttribute('aria-label','Açık uçlu sorular');
+
+  const num = String(stepIndex+1).padStart(2,'0');
+  step.innerHTML = `
+    <div class="section-head">
+      <span class="sec-number"><span class="num">${num}</span><span class="of">/ ${String(TOTAL_STEPS).padStart(2,'0')}</span></span>
+      <h2>Söz Sizde</h2>
+      <p class="lead">Bu bölümdeki soruların tümü isteğe bağlıdır. Paylaşmak istedikleriniz bizim için çok değerli.</p>
+    </div>
+    ${SURVEY.openEnded.map((q,i)=>`
+      <div class="oe">
+        <label for="oe-${i}">${esc(q)} <span class="opt">(opsiyonel)</span></label>
+        <textarea id="oe-${i}" name="oe-${i}" rows="4" maxlength="2000" placeholder="Düşüncelerinizi buraya yazabilirsiniz…"></textarea>
+      </div>`).join('')}
+  `;
+  form.appendChild(step);
+}
+
+/* ---- Navigation injected per step ---- */
+function buildNav(){
+  document.querySelectorAll('.step').forEach((step, idx)=>{
+    const nav = document.createElement('div');
+    nav.className = 'nav';
+    const isLast = idx === TOTAL_STEPS - 1;
+    nav.innerHTML = `
+      ${idx>0 ? `<button type="button" class="btn btn-ghost" data-act="prev">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          Geri</button>` : `<span></span>`}
+      <span class="spacer"></span>
+      ${isLast
+        ? `<button type="button" class="btn btn-primary" data-act="submit">Anketi Gönder
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>`
+        : `<button type="button" class="btn btn-primary" data-act="next">İleri
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>`}
+    `;
+    const alert = document.createElement('div');
+    alert.className = 'step-alert';
+    alert.id = `step-alert-${idx}`;
+    alert.setAttribute('role','alert');
+    alert.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Devam etmek için işaretlenmemiş zorunlu alanları tamamlayın.</span>`;
+    step.appendChild(alert);
+    step.appendChild(nav);
+  });
+}
+
+/* ============ build everything ============ */
+buildDemographics();
+buildGroups();
+buildOpenEnded();
+buildNav();
+
+const steps = Array.from(document.querySelectorAll('.step'));
+
+const STEP_NAMES = ['Demografik Bilgiler']
+  .concat(SURVEY.groups.map(g=>g.tema))
+  .concat(['Açık Uçlu Sorular']);
+
+/* ---- progress + show step ---- */
+function updateProgress(){
+  const pct = Math.round((current) / (TOTAL_STEPS) * 100);
+  const shown = Math.round(((current) / (TOTAL_STEPS - 1)) * 100);
+  $('#bar').style.width = shown + '%';
+  $('#progressbar').setAttribute('aria-valuenow', String(shown));
+  $('#stepLabel').innerHTML = `<b>Adım ${current+1}</b> / ${TOTAL_STEPS} · ${esc(STEP_NAMES[current])}`;
+  $('#pctLabel').textContent = shown + '% tamamlandı';
+}
+
+function showStep(i, focus=true){
+  steps.forEach((s,idx)=> s.classList.toggle('active', idx===i));
+  current = i;
+  updateProgress();
+  if(focus){
+    const h2 = steps[i].querySelector('h2');
+    if(h2){ h2.setAttribute('tabindex','-1'); h2.focus({preventScroll:true}); }
+    window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  }
+  clearStepAlert(i);
+}
+
+function clearStepAlert(i){
+  const a = $(`#step-alert-${i}`);
+  if(a) a.classList.remove('show');
+}
+
+/* ---- validation ---- */
+function validateStep(i){
+  let firstInvalid = null;
+
+  if(i===0){
+    // kıdem required
+    const checked = form.querySelector('input[name="kidem"]:checked');
+    const errEl = $('#err-kidem');
+    const grp = $('#kidem-group');
+    if(!checked){
+      grp.classList.add('invalid');
+      grp.setAttribute('aria-invalid','true');
+      errEl.style.display = 'flex';
+      if(!firstInvalid) firstInvalid = grp;
+    } else {
+      grp.classList.remove('invalid');
+      grp.removeAttribute('aria-invalid');
+      errEl.style.display = 'none';
+    }
+  } else if(i >= 1 && i <= SURVEY.groups.length){
+    const g = SURVEY.groups[i-1];
+    g.questions.forEach(q=>{
+      const ans = form.querySelector(`input[name="q_${q.no}"]:checked`);
+      const wrap = $(`#qwrap_${q.no}`);
+      if(!ans){
+        wrap.classList.add('invalid');
+        wrap.setAttribute('aria-invalid','true');
+        if(!firstInvalid) firstInvalid = wrap;
+      } else {
+        wrap.classList.remove('invalid');
+        wrap.removeAttribute('aria-invalid');
+      }
+    });
+  }
+  // open-ended step has nothing required
+
+  if(firstInvalid){
+    const alert = $(`#step-alert-${i}`);
+    if(alert) alert.classList.add('show');
+    const target = firstInvalid;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({behavior: reduce ? 'auto':'smooth', block:'center'});
+    // move focus into the first invalid control
+    const focusable = target.querySelector('input');
+    if(focusable) setTimeout(()=>focusable.focus({preventScroll:true}), reduce?0:300);
+    return false;
+  }
+  clearStepAlert(i);
+  return true;
+}
+
+/* clear a question's invalid state as soon as it's answered */
+form.addEventListener('change', (e)=>{
+  const t = e.target;
+  if(t.name && t.name.startsWith('q_')){
+    const wrap = t.closest('.q');
+    if(wrap){ wrap.classList.remove('invalid'); wrap.removeAttribute('aria-invalid'); }
+  }
+  if(t.name === 'kidem'){
+    const grp = $('#kidem-group');
+    grp.classList.remove('invalid');
+    grp.removeAttribute('aria-invalid');
+    $('#err-kidem').style.display = 'none';
+  }
+});
+
+/* ---- nav actions ---- */
+form.addEventListener('click', (e)=>{
+  const btn = e.target.closest('button[data-act]');
+  if(!btn) return;
+  const act = btn.dataset.act;
+
+  if(act === 'prev'){
+    if(current>0) showStep(current-1);
+  } else if(act === 'next'){
+    if(validateStep(current)){
+      if(current < TOTAL_STEPS-1) showStep(current+1);
+    }
+  } else if(act === 'submit'){
+    handleSubmit(btn);
+  }
+});
+
+/* ---- submit ---- */
+function handleSubmit(btn){
+  if(submitted) return;
+  // final safety: validate ALL steps
+  for(let s=0; s<=SURVEY.groups.length; s++){
+    if(!validateStep(s)){
+      showStep(s);
+      setTimeout(()=>validateStep(s), 50);
+      return;
+    }
+  }
+
+  submitted = true;
+  btn.disabled = true;
+  btn.textContent = 'Gönderiliyor…';
+
+  const payload = collectData();
+  // simulate async submit
+  setTimeout(()=>{
+    console.log('ANKET YANITI:', JSON.stringify(payload, null, 2));
+    finishUp();
+  }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 600);
+}
+
+function collectData(){
+  const yasRaw = $('#yas').value.trim();
+  const kisiselBilgiler = {
+    yas: yasRaw === '' ? null : Number(yasRaw),
+    sehir: $('#sehir').value || null,
+    cinsiyet: (form.querySelector('input[name="cinsiyet"]:checked')||{}).value || null,
+    kidem: (form.querySelector('input[name="kidem"]:checked')||{}).value || null
+  };
+
+  const yanitlar = [];
+  SURVEY.groups.forEach(g=>{
+    g.questions.forEach(q=>{
+      const sel = form.querySelector(`input[name="q_${q.no}"]:checked`);
+      yanitlar.push({
+        no: q.no,
+        alan: g.alan,
+        tema: g.tema,
+        boyut: q.boyut,
+        deger: sel ? Number(sel.value) : null
+      });
+    });
+  });
+
+  const acikUclu = {};
+  SURVEY.openEnded.forEach((q,i)=>{
+    const v = $(`#oe-${i}`).value.trim();
+    acikUclu[`soru${i+1}`] = v === '' ? null : v;
+  });
+
+  return { kisiselBilgiler, yanitlar, acikUclu };
+}
+
+function finishUp(){
+  form.style.display = 'none';
+  $('.progress-shell').style.display = 'none';
+  $('#bar').style.width = '100%';
+  const t = $('#thanks');
+  t.classList.add('active');
+  t.focus();
+  window.scrollTo({top:0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto':'smooth'});
+}
+
+/* ---- keyboard: Enter on demographics inputs goes next, not submit ---- */
+form.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.type !== 'submit'){
+    const nextBtn = steps[current].querySelector('button[data-act="next"]');
+    if(nextBtn){ e.preventDefault(); nextBtn.click(); }
+  }
+});
+
+/* ---- init ---- */
+showStep(0, false);
+</script>
+</body>
+</html>
